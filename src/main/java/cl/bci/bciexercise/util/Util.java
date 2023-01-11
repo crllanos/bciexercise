@@ -10,7 +10,6 @@ public class Util {
 
     private final Gson gsonUtil;
 
-    // todo evitar logear la pass
     public String objToJson(Object o){
         return gsonUtil.toJson(o);
     }
