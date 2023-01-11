@@ -6,16 +6,17 @@ import lombok.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserResponseDTO {
-    private String id; // @todo pasar a UUID
+    private UUID id;
     private String name;
     private String email;
-    private String password;
+    //private String password;
     private List<PhoneDTO> phones;
     private LocalDate created;
     private LocalDate modified;
