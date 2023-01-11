@@ -2,6 +2,7 @@ package cl.bci.bciexercise.service;
 
 import cl.bci.bciexercise.dto.UserDTO;
 import cl.bci.bciexercise.dto.UserResponseDTO;
+import cl.bci.bciexercise.exception.WeakPasswordException;
 import cl.bci.bciexercise.repository.UserRepository;
 import cl.bci.bciexercise.validation.EmailValidator;
 import cl.bci.bciexercise.validation.PasswordValidator;
@@ -22,14 +23,18 @@ public class UserService {
 
     public UserResponseDTO createUser(UserDTO user){
         // valida la password
+        // 406 Not Acceptable
         if(!passwordValidator.isValid(user.getPassword())){
-            throw new IllegalArgumentException("Debe elegir una contraseña más segura.");
+            throw new WeakPasswordException("Debe elegir una contraseña más segura.");
         }
 
         // valida email
+        // 400 Bad Request - IllegalArgumentException
         if(!emailValidator.isValidMail(user.getEmail())){
             throw new IllegalArgumentException("Formato de email es incorrecto.");
         }
+
+        // 409 Conflict
         if (Objects.nonNull(userRepository.findUserByEmail(user.getEmail()))){
             throw new IllegalArgumentException("El correo ya esta registrado.");
         }
