@@ -12,14 +12,21 @@ public class CustomExceptionHandler {
     public ResponseEntity<CustomException> handleIllegalArgumentException(IllegalArgumentException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(CustomException.builder()
-                .mensaje(e.getMessage()).build());
+                    .mensaje(e.getMessage()).build());
     }
 
     @ExceptionHandler(WeakPasswordException.class)
     public ResponseEntity<CustomException> handleWeakPasswordException(WeakPasswordException e) {
         return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
                 .body(CustomException.builder()
-                .mensaje(e.getMensaje()).build());
+                        .mensaje(e.getMensaje()).build());
+    }
+
+    @ExceptionHandler(EmailAlreadyExistsException.class)
+    public ResponseEntity<CustomException> handleEmailAlreadyExistsException(EmailAlreadyExistsException e) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(CustomException.builder()
+                        .mensaje(e.getMensaje()).build());
     }
 
 }
