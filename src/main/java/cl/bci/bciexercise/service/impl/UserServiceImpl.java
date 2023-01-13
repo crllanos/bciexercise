@@ -13,6 +13,7 @@ import cl.bci.bciexercise.validation.EmailValidator;
 import cl.bci.bciexercise.validation.PasswordValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,16 +32,20 @@ import java.util.*;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService, UserDetailsService {
 
-    private final UserRepository userRepository;
-    private final EmailValidator emailValidator;
-    private final PasswordValidator passwordValidator;
-    private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private EmailValidator emailValidator;
+    @Autowired
+    private PasswordValidator passwordValidator;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Transactional
     public UserResponseDTO createUser(UserDTO user){
 
         if(!passwordValidator.isValid(user.getPassword())){
-            throw new WeakPasswordException("Debe elegir una contraseña más segura.");
+            throw new WeakPasswordException("Debe elegir una password más segura.");
         }
 
         if(!emailValidator.isValidMail(user.getEmail())){
