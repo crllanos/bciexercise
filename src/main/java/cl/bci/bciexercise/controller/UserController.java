@@ -6,6 +6,7 @@ import cl.bci.bciexercise.service.UserService;
 import cl.bci.bciexercise.util.Util;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
+@Validated
 @RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
 public class UserController {
@@ -50,6 +52,7 @@ public class UserController {
     @PostMapping
     public UserResponseDTO createUser(@RequestBody UserDTO user){
 
+        user.setRole("ROLE_USER");
         log.info("POST /api/v1/user request: {}", util.objToJson(user));
         UserResponseDTO response = userService.createUser(user);
         log.info("POST /api/v1/user response: {}", util.objToJson(response));

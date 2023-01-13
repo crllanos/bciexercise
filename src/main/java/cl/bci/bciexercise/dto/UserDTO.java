@@ -12,5 +12,6 @@ public class UserDTO {
     private String name;
     private String email;
     private transient String password;
+    private String role;
     private List<PhoneDTO> phones;
 }

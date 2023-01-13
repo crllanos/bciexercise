@@ -20,3 +20,5 @@ application:
   security:
     password:
       pattern: ^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()?[{}]:;',?/*~$^+=<>]).{8,20}$
+    jwt:
+      secret: s3cret

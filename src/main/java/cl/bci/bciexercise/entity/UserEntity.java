@@ -20,8 +20,10 @@ public class UserEntity {
     private UUID id;
 
     private String name;
+    @Column(unique = true)
     private String email;
     private String password;
+    private String role;
     @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     private List<PhoneEntity> phones;
     private LocalDate created;

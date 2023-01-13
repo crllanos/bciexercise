@@ -9,4 +9,7 @@ public interface UserService {
 
     UserResponseDTO createUser(UserDTO user);
 
+    void saveUser(UserDTO user);
+
+
 }

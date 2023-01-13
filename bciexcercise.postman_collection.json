@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "f7b8f472-cc19-4813-8c4d-10f3f471ae69",
+		"name": "bciexcercise",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ERROR invalid pass",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBiY2kuY2wiLCJyb2xlcyI6WyJST0xFX0FETUlOIl0sImlzcyI6Ii9hcGkvbG9naW4iLCJleHAiOjE2NzM2MTkwNTZ9.kW0PgUfs98Q-JqiQ4XWWXTnpq_CAPfsPT-RNkwvtS10",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Juan Rodriguez\",\n    \"email\": \"juan@rodriguez.org\",\n    \"password\": \"x@123\",\n    \"phones\": [\n        {\n            \"number\": \"1234567\",\n            \"citycode\": \"1\",\n            \"contrycode\": \"57\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR invalid email",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBiY2kuY2wiLCJyb2xlcyI6WyJST0xFX0FETUlOIl0sImlzcyI6Ii9hcGkvbG9naW4iLCJleHAiOjE2NzM2MTkwNTZ9.kW0PgUfs98Q-JqiQ4XWWXTnpq_CAPfsPT-RNkwvtS10",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Juan Rodriguez\",\n    \"email\": \"juan_rodriguez.org\",\n    \"password\": \"AAAbbbCCC@123\",\n    \"phones\": [\n        {\n            \"number\": \"1234567\",\n            \"citycode\": \"1\",\n            \"contrycode\": \"57\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "admin@bci.cl",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "admIn@321",
+							"type": "default"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OK saveUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBiY2kuY2wiLCJyb2xlcyI6WyJST0xFX0FETUlOIl0sImlzcyI6Ii9hcGkvbG9naW4iLCJleHAiOjE2NzM2MjE3MDd9.mp2afaSQ0GY5v9_aJVra7fLgQpwFM59Fghhvjcyjx8g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Juan Rodriguez\",\n    \"email\": \"juan@rodriguez2.org\",\n    \"password\": \"AAAbbbCCC@123\",\n    \"phones\": [\n        {\n            \"number\": \"11111111\",\n            \"citycode\": \"1\",\n            \"contrycode\": \"56\"\n        },\n        {\n            \"number\": \"11111111\",\n            \"citycode\": \"2\",\n            \"contrycode\": \"56\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
